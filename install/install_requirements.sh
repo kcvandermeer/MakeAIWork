@@ -31,7 +31,7 @@ function install_with_conda {
     keras \
     Keras-Preprocessing \
     lidar \
-    matplotlib-base \
+    matplotlib \
     numexpr \
     pandas \
     Pillow \
@@ -61,5 +61,5 @@ function install_with_pip {
 
 }
 
-install_with_conda
+# install_with_conda
 install_with_pip 

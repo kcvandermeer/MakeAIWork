@@ -4,3 +4,8 @@ ptpython
 scipy
 SimPyLC==3.10.0
 sonar
+matplotlib
+numexpr 
+pandas 
+Pillow 
+pyopengl 
