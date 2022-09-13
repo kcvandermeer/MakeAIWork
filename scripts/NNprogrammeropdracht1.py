@@ -10,7 +10,11 @@ import random as rd
 symbolVecs = {'O': (1, 0), 'X': (0, 1)}
 symbolChars = dict ((value, key) for key, value in symbolVecs.items ())
 
+<<<<<<< HEAD
 # Define datasets for training & testing
+=======
+# Define datasets for training
+>>>>>>> 797a719 (13september11uur)
 
 trainingSet = (
     ((
@@ -35,6 +39,7 @@ trainingSet = (
     ), 'X')
 )
 
+<<<<<<< HEAD
 testSet = (
     ((
         (0, 1, 1),
@@ -79,6 +84,8 @@ testSet = (
 )      
 
 
+=======
+>>>>>>> 797a719 (13september11uur)
 #design classes 'Node' & 'Link'
 
 class Node:
