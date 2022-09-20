@@ -38,22 +38,6 @@ trainingSet = (
 
 
 
-# def mat2vec(mat):
-#     vec = []
-    
-#     rows = len(mat)
-    
-#     for row in range(0, rows):
-#         cols = len(mat[row])
-#         for col in range(0, cols):
-#             vec.append(mat[row][col])
-#     return vec
-
-# v1 = mat2vec(mat1)
-# v2 = mat2vec(mat2)
-# v3 = mat2vec(mat3)
-# v4 = mat2vec(mat4)
-
 
 
 #design classes 'Node' & 'Link'
@@ -69,7 +53,7 @@ class Node:
 # self.x1 = Node( , 0) 
 # self.x2 = Node( , 0)
 # self.x3 = Node( , 0)
- # self.x4 = Node( , 0)
+# self.x4 = Node( , 0)
 # self.x5 = Node( , 0)  # x5 is zeer waarschijnlijk de meest invloedrijke of bepalende inputnode
 # self.x6 = Node( , 0)
 # self.x7 = Node( , 0)
@@ -86,6 +70,8 @@ class Link:
         self.inputNode = inputNode
         self.outputNode = outputNode
         
+ 
+
         
  # design links as objects
 
@@ -108,53 +94,92 @@ class Link:
 # self.l17 = Link(weightO[], weightX[7], x8, y2)
 # self.l18 = Link(weightO[], weightX[8], x9, y2)
 
-
 weightO = [1, 1, 1, 1, 1, 1, 1, 1, 1]
 weightX = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+# def mat2vec(mat):
+#     vec = []
+    
+#     rows = len(mat)
+    
+#     for row in range(0, rows):
+#         cols = len(mat[row])
+#         for col in range(0, cols):
+#             vec.append(mat[row][col])
+#     return vec
+
+# v1 = mat2vec(trainingSet[0])
+# v2 = mat2vec(trainingSet[1])
+# v3 = mat2vec(trainingSet[2])
+# v4 = mat2vec(trainingSet[3])
+
+
+
+# (design temporary vectors until previous function works properly)
 
 v1 = [1,1,1,1,0,1,1,1,1]
 v2 = [0,1,0,1,0,1,0,1,0]
 v3 = [0,1,0,1,1,1,0,1,0]
 v4 = [1,0,1,0,1,0,1,0,1]
 
+vecList = list[v1, v2, v3, v4]
+
 #design function to multiply trainingset with weights
 
 # def input2output:
 
-#  v (9x1 vector) * weights(1x9 vector)
+#  v (9x1 vector) * weights
 
 
 
-def multiplier(v1, weightO, weightX):
+def multiplier(v4, weightO, weightX):
     c = []
     f = []
-    c = sum([a * b for a, b in zip(v1, weightO)])
-    f = sum([d * e for d, e in zip(v1, weightX)])
+    c = sum([a * b for a, b in zip(v4, weightO)])
+    f = sum([d * e for d, e in zip(v4, weightX)])
     return c, f 
     
 
 
-print(multiplier(v1, weightO, weightX))
+print(multiplier(v4, weightO, weightX))
 
-output = multiplier(v1, weightO, weightO)
-outputO = print(output[0])
-outputX = print(output[1])
+outputs = multiplier(v4, weightO, weightO)
+outputO = print(outputs[0])
+outputX = print(outputs[1])
 
 #design Softmax function (to calculate the possibility on X or O)  and Loss/Cost function,  which are both not dependent on classes
 
 
 #Softmax = e ^ (x - max(x)) / sum(e ^ (x - max(x))
 
-# def softmax:
-#     math.exp() / math.exp()
+def softmax(outputs):
+    exponentials = []
+    for item in outputs:
+        exponentials.append(math.exp(item))
+        sum_exponentials = sum(exponentials)
+        probabilities = []
+        for item in exponentials:
+            probabilities.append(item/sum_exponentials)
+    return probabilities
+       
+print(softmax(outputs))
 
 #Loss function = Cost function = mean squared error = MSE = (1/n) * Σ (actual – prediction)2
 
 # def MSE:
-#     (1/4) * (yactual - yprediction)2
+#     (1/4) * sum(1 - )2
     
+ 
+    
+def loss_function(probabilities, labels):
+    loss = 0
+    for i in range(len(probabilities))
+    error = label[i] - probabilities[i]
+    squared_error = error**2
+    loss += squared_error
+return loss
 
-
+labels = [0,1]  
 
 
 
