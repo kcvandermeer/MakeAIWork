@@ -1,9 +1,10 @@
 import math
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
 # Abstraction: Abstract Superclass
 class Shape(ABC):
-    # Dunder method with Arguments/Parameters
+    # Constructor method with Arguments/Parameters
     def __init__(self, width, height):
         # Self
         # Attributes
