@@ -1,3 +1,0 @@
-C:\Users\kcvan\MakeAIWork\simulations\car\control_client> python .\hardcoded_client.py
-
-!python -m pip install pandas numpy keras

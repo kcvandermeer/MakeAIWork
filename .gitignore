@@ -18,3 +18,4 @@ env/
 log.txt
 scripts/Practica/__MACOSX/practicum_classes/._.DS_Store
 scripts/Practica/practicum_classes/car_race/__pycache__/
+simulations/car/control_client/default.samples
