@@ -15,7 +15,7 @@ See the QQuickLicense for details.
 The QQuickLicense can be accessed at: http://www.qquick.org/license.html
 
 __________________________________________________________________________
-
+l
 
  THIS PROGRAM IS FUNDAMENTALLY UNSUITABLE FOR CONTROLLING REAL SYSTEMS !!
 
