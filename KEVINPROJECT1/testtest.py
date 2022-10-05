@@ -1,3 +1,2 @@
-import tensorflow as tf
-
-print('tensorflow version', tf.__version__)
+import matplotlib
+print('matplotlib: {}'.format(matplotlib.__version__))

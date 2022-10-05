@@ -74,11 +74,11 @@ class DrivingAgent:
         if 'lidarDistances' in sensors:
             self.lidarDistances = sensors ['lidarDistances']
             if self.model==None:
-                self.model = tf.keras.models.load_model(model_lidar_path) #lidar uit model path            
+                self.model = tf.keras.models.load_model(model_lidar_path)           
         else:
             self.sonarDistances = sensors ['sonarDistances']
             if self.model==None:
-                self.model = tf.keras.models.load_model(model_sonar_path) #sonar uit model path
+                self.model = tf.keras.models.load_model(model_sonar_path) 
 
 
     def lidarSweep (self):
