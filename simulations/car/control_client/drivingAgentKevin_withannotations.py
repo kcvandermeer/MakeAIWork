@@ -81,15 +81,15 @@ class DrivingAgent:                     #als klasse omdat onderstaande functies 
                 self.model = tf.keras.models.load_model(model_sonar_path) #sonar uit model path inladen
 
 
-    def lidarSweep (self):                                                          #Must have in MoSCoW notatie
+    def lidarSweep (self):                                                          #Must have in MoSCoW notatie - HELAAS NIET WERKEND!
         sample = self.model.predict(np.array([self.lidarDistances]))        
         steeringangle = self.model.predict(np.array([sample[0:16]])) 
         self.steeringAngle = float(steeringangle[0]) 
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle) 
 
     def sonarSweep (self):                                                          #Must have in MoSCoW notatie
-        sample = self.model.predict(np.array([self.sonarDistances]))
-        self.steeringAngle = float(sample[0][0])
+        sample = self.model.predict(np.array([self.sonarDistances]))                #input uit model is nu de aansturing van sonarSweep
+        self.steeringAngle = float(sample[0][0])                                    
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle)
 
     def sweep (self):                                                               #keuze uit lidarsweep/sonarsweep. In de sweep gebeurt het meeste.
