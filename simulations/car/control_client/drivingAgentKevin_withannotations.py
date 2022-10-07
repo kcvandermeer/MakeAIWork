@@ -42,7 +42,7 @@ ss.path +=  [os.path.abspath (relPath) for relPath in  ('..',)]     #pad waar in
 import socket_wrapper as sw     #zie socket
 import parameters as pm         #noodzakelijke module
 
-model_sonar_path = r'simulations/Sonardata_trainingmodel.ipynb'
+model_sonar_path = r'../simulations/Sonardata_trainingmodel.ipynb'
 #model_lidar_path = r'simulations/Lidardata_trainingmodel.ipynb'
 
 

@@ -36,14 +36,13 @@ import tensorflow as tf
 import numpy as np
 keras = tf.keras
 
-
 ss.path +=  [os.path.abspath (relPath) for relPath in  ('..',)] 
 
 import socket_wrapper as sw
 import parameters as pm
 
-model_sonar_path = r'simulations/Sonardata_trainingmodel.ipynb'
-#model_lidar_path = r'simulations/Lidardata_trainingmodel.ipynb'
+model_sonar_path = 'C:/Users/kcvan/MakeAIWork/KEVINPROJECT1/norm_sonar_model_01'
+# model_lidar_path = 'C:/Users/kcvan/MakeAIWork/KEVINPROJECT1/norm_lidar_model_01'
 
 
 class DrivingAgent:
@@ -74,22 +73,21 @@ class DrivingAgent:
         if 'lidarDistances' in sensors:
             self.lidarDistances = sensors ['lidarDistances']
             if self.model==None:
-                self.model = tf.keras.models.load_model(model_lidar_path)           
+                self.model = tf.keras.models.load_model(model_lidar_path) #lidar uit model path            
         else:
             self.sonarDistances = sensors ['sonarDistances']
             if self.model==None:
-                self.model = tf.keras.models.load_model(model_sonar_path) 
+                self.model = tf.keras.models.load_model(model_sonar_path) #sonar uit model path
 
 
-    def lidarSweep (self):
-        sample = self.model.predict(np.array([self.lidarDistances]))        
+    def lidarSweep (self):        
         steeringangle = self.model.predict(np.array([sample[0:16]])) 
         self.steeringAngle = float(steeringangle[0]) 
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle) 
 
     def sonarSweep (self):
         sample = self.model.predict(np.array([self.sonarDistances]))
-        self.steeringAngle = float(sample[0][0])
+        self.steeringAngle = float(sample[0][0]) # koppelen
         self.targetVelocity = pm.getTargetVelocity (self.steeringAngle)
 
     def sweep (self):

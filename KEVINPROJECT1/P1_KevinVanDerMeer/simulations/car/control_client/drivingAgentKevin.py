@@ -42,8 +42,8 @@ ss.path +=  [os.path.abspath (relPath) for relPath in  ('..',)]
 import socket_wrapper as sw
 import parameters as pm
 
-model_sonar_path = r'simulations/Sonardata_trainingmodel.ipynb'
-#model_lidar_path = r'simulations/Lidardata_trainingmodel.ipynb'
+model_sonar_path = r'../P1_KevinVanDerMeer/norm_sonar_model_01'
+#model_lidar_path = r'../P1_KevinVanDerMeer/norm_lidar_model_01'
 
 
 class DrivingAgent:
@@ -60,7 +60,6 @@ class DrivingAgent:
                     self.input ()
                     self.sweep ()
                     self.output ()
-                    # self.logTraining ()
                     tm.sleep (0.02)
 
     def input (self):
@@ -106,33 +105,5 @@ class DrivingAgent:
 
         self.socketWrapper.send (actuators)
 
-    # def logLidarTraining (self):
-    #     sample = [pm.finity for entryIndex in range (pm.lidarInputDim + 1)]
-
-    #     for lidarAngle in range (-self.halfApertureAngle, self.halfApertureAngle):
-    #         sectorIndex = round (lidarAngle / self.sectorAngle)
-    #         sample [sectorIndex] = min (sample [sectorIndex], self.lidarDistances [lidarAngle])
-    #     steeringangle = self.model.predict(np.array([sample]))
-
-    #     self.steeringAngle = float(steeringangle[0][0])
-
-    #     self.targetVelocity = pm.getTargetVelocity (self.steeringAngle)
-    #     sample [-1] = self.steeringAngle
-    #     print (*sample, file = self.sampleFile)
-
-    # def logSonarTraining (self):
-    #     sample = [pm.finity for entryIndex in range (pm.sonarInputDim + 1)]
-
-    #     for entryIndex, sectorIndex in ((2, -1), (0, 0), (1, 1)):
-    #         sample [entryIndex] = self.sonarDistances [sectorIndex]
-
-    #     sample [-1] = self.steeringAngle
-    #     print (*sample, file = self.sampleFile)
-
-    # def logTraining (self):
-    #     if hasattr (self, 'lidarDistances'):
-    #         self.logLidarTraining ()
-    #     else:
-    #         self.logSonarTraining ()
 
 DrivingAgent ()
